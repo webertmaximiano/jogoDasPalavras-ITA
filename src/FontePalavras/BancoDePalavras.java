@@ -19,11 +19,11 @@ public class BancoDePalavras {
     private List<String> lerArquivo(String arquivo) { //metodo que lê o Arquivo e coloca as palavras em uma lista
         List<String> palavras = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
-            String linha;
+            String linha; //armazenar a linha lida
             while ((linha = br.readLine()) != null) {
-                palavras.add(linha);
+                palavras.add(linha); //coloca a linha na lista de palavras
             }
-        } catch (IOException e) {
+        } catch (IOException e) { // bloco try/catch trata possíveis erros.
             System.err.println("Erro ao ler o arquivo " + arquivo + ": " + e.getMessage());
         }
         return palavras;
