@@ -1,7 +1,7 @@
 package Jogo;
 
 public interface MecanicaDoJogo {
-    public String getNome();
+    public String ModoDeJogo();
     public Boolean acabouJogo();
     public Boolean acertouResposta();
     public int tentativas();
