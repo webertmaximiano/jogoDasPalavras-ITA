@@ -34,4 +34,7 @@ public class BancoDePalavras {
         int indiceAleatorio = random.nextInt(this.palavras.size());
         return this.palavras.get(indiceAleatorio);
     }
+    public List<String> getPalavras() {
+        return this.palavras;
+    }
 }
