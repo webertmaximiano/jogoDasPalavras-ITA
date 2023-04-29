@@ -11,7 +11,7 @@ import java.util.Random;
 // e colocar em uma Lista, oferecendo um método para devolver uma palavra
 public class BancoDePalavras {
     private List<String> palavras; //Atributo lista de palavras
-
+    private String arquivo = "F:\\www\\curso\\ita-java\\TrabalhoFinal\\JogoDasPalavras\\src\\FontePalavras\\palavras.txt"; // substitua pelo caminho do seu arquivo
     public BancoDePalavras(String arquivo) { //construtor da Lista de Palavras
         this.palavras = lerArquivo(arquivo);
     }
