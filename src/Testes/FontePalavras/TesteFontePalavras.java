@@ -1,4 +1,4 @@
-package Testes;
+package Testes.FontePalavras;
 
 import FontePalavras.BancoDePalavras;
 import org.junit.jupiter.api.Assertions;

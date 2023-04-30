@@ -7,7 +7,7 @@ public class ErrouAcabou implements MecanicaDoJogo{
     private String arquivo = "F:\\www\\curso\\ita-java\\TrabalhoFinal\\JogoDasPalavras\\src\\FontePalavras\\palavras.txt"; // substitua pelo caminho do seu arquivo
     private boolean errou = false;
     private int pontos = 0;
-
+    private String resultadoRespostaDavez;
     private int tentativas =0;
     private BancoDePalavras banco = new BancoDePalavras(arquivo);
     @Override
@@ -36,26 +36,26 @@ public class ErrouAcabou implements MecanicaDoJogo{
     }
 
     @Override
-    public int tentativas() {
-        return tentativas;
-    }
-
-    @Override
-    public int pontos() {
-        return pontos;
-    }
-
-    @Override
     public String respostaDaVez(String palavra, String resposta) {
+
         if (palavra.equals(resposta)){
             tentativas+=1;
             pontos+=2;
-            return "Resposta Correta! Vamos pra Próxima!";
+            return resultadoRespostaDavez = "Resposta Correta! Vamos pra Próxima!";
         }else {
             errou = true;
-            return "Resposta Errada! Acabou o Jogo!";
+            return resultadoRespostaDavez = "Resposta Errada! Acabou o Jogo!";
         }
 
+    }
+
+    @Override
+    public String passouDeFase() {
+        if (resultadoRespostaDavez.equals("Resposta Correta! Vamos pra Próxima!") ){
+            return "Você Passou de Fase!";
+        } else {
+            return "Você não Passou de Fase!";
+        }
     }
 
     @Override

@@ -9,6 +9,8 @@ public class CincoChances implements MecanicaDoJogo {
     private boolean gameover = false;
     private int pontos = 0;
     private int tentativas =0;
+    private boolean passouDeFase= false;
+    private String resultadoRespostaDavez;
     private BancoDePalavras banco = new BancoDePalavras(arquivo);
     @Override
     public String modoDeJogo() {
@@ -31,25 +33,17 @@ public class CincoChances implements MecanicaDoJogo {
 
     @Override
     public Boolean acertouResposta() {
+
         if (tentativas == 5 && pontos > 8) {
             tentativas=0;
             pontos =0;
+            passouDeFase = true;
             return gameover = false;
         } else {
-            while (tentativas ==5 && pontos <8)
+            while (tentativas == 5 && pontos <8)
             return gameover = true;
         }
-        return null;
-    }
-
-    @Override
-    public int tentativas() {
-        return tentativas;
-    }
-
-    @Override
-    public int pontos() {
-        return pontos;
+        return gameover;
     }
 
     @Override
@@ -58,12 +52,23 @@ public class CincoChances implements MecanicaDoJogo {
         if (palavra.equals(resposta) ){
             tentativas+=1;
             pontos+=2;
-            return "Resposta Correta! Vamos pra Próxima!";
+            return resultadoRespostaDavez = "Resposta Correta! Vamos pra Próxima!";
         }else {
             tentativas+=1;
-            return "Resposta Errada! Tente Outra vez!";
+            return resultadoRespostaDavez = "Resposta Errada! Tente Outra vez!";
         }
 
+    }
+
+    @Override
+    public String passouDeFase() {
+        if (passouDeFase) {
+            return "Você Passou de Fase!";
+        } else if (passouDeFase == false && gameover == true) {
+            return "Você não Passou de Fase!";
+        } else {
+            return "Próxima tentativa.";
+        }
     }
 
     @Override

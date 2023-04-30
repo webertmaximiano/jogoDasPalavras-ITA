@@ -8,7 +8,20 @@ public class DeDezAcaba implements MecanicaDoJogo{
     private boolean terminou = false;
     private int pontos = 0;
     private int tentativas =0;
+    private boolean passouDeFase;
     private BancoDePalavras banco = new BancoDePalavras(arquivo);
+
+    @Override
+    public String passouDeFase() {
+        if (passouDeFase) {
+            return "Você Conseguiu Somar 10 Pontos!";
+        } else if (passouDeFase == false && terminou == true) {
+            return "O Jogo Acabou!";
+        } else {
+            return "Próxima tentativa";
+        }
+    }
+
     @Override
     public String modoDeJogo() {
         return "De Dez Acaba!";
@@ -31,20 +44,12 @@ public class DeDezAcaba implements MecanicaDoJogo{
     @Override
     public Boolean acertouResposta() {
         if ( pontos >= 10) {
+            passouDeFase = true;
             return terminou = true;
         } else {
+            passouDeFase = false;
             return terminou = false;
         }
-    }
-
-    @Override
-    public int tentativas() {
-        return tentativas;
-    }
-
-    @Override
-    public int pontos() {
-        return pontos;
     }
 
     @Override
@@ -53,10 +58,10 @@ public class DeDezAcaba implements MecanicaDoJogo{
         if (palavra.equals(resposta) ){
             tentativas+=1;
             pontos+=2;
-            return "Resposta Correta! Vamos pra Próxima!";
+            return  "Resposta Correta! Vamos pra Próxima!";
         }else {
             tentativas+=1;
-            return "Resposta Errada! Tente Outra vez!";
+            return  "Resposta Errada! Tente Outra vez!";
         }
 
     }
